@@ -4,26 +4,17 @@ let arrObj = [
     {"person" : "Spencer", "age" : 34, "avatar" : "https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Prescription02&hairColor=Blonde&facialHairType=BeardMedium&facialHairColor=Black&clotheType=CollarSweater&clotheColor=PastelRed&eyeType=Dizzy&eyebrowType=SadConcerned&mouthType=Sad&skinColor=Yellow"}
 ];
 
-document.getElementById("img").src = arrObj[0].avatar;
-$("#nom").html("Nom: " + arrObj[0].person);
-$("#age").html("Age: " + arrObj[0].age);
+$.each(arrObj, function(index, value) {
+   let avatar = document.createElement("img");
+   avatar.src = value.avatar;
+   document.body.append(avatar);
 
-let index = 0;
-$("#avant").click(function (){
-    if (index === 0) index = arrObj.length-1;
-    else index--;
+   let nom = document.createElement("p");
+   nom.innerHTML = "Nom: " + value.person;
+   document.body.append(nom);
 
-    document.getElementById("img").src = arrObj[index].avatar;
-    $("#nom").html("Nom: " + arrObj[index].person);
-    $("#age").html("Age: " + arrObj[index].age);
+   let age = document.createElement("p");
+   age.innerHTML = "Age: " + value.age;
+   document.body.append(age);
+
 });
-
-$("#apres").click(function (){
-    if (index === arrObj.length-1) index = 0;
-    else index++;
-
-    document.getElementById("img").src = arrObj[index].avatar;
-    $("#nom").html("Nom: " + arrObj[index].person);
-    $("#age").html("Age: " + arrObj[index].age);
-});
-
